@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Parkir - Hasil Deteksi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <header>SISTEM PARKIR</header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('login') }}"
+                ><i class="ri-account-circle-line"></i>Login</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('index') }}"
+                ><i class="ri-parking-box-line"></i>Parkir Masuk</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('form_keluar') }}"
+                ><i class="ri-parking-fill"></i>Parkir Keluar</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('laporan')}}"
+                ><i class="ri-folder-open-line"></i>Laporan
+              </a>
+            </li>
+            <ul>
+              <li>
+                <a href="{{ url_for('deteksi')}}"
+                  ><i class="ri-scan-line"></i>Hasil Deteksi</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('masuk') }}"
+                  ><i class="ri-e-bike-line"></i>Kendaraan Masuk</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('keluar') }}"
+                  ><i class="ri-motorbike-line"></i>Kendaraan Keluar</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('admin') }}"
+                  ><i class="ri-user-line"></i>Data Admin</a
+                >
+              </li>
+            </ul>
+            <li>
+              <a href="{{ url_for('about') }}"
+                ><i class="ri-settings-line"></i>Tentang</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="upload">
+        <h1>Hasil Deteksi</h1>
+        <img
+          id="resultImage"
+          src="{{ url_for('static', filename='/' + session['filename']) }}"
+          alt="Uploaded Image"
+          width="250px"
+        />
+        <h5>Plat Nomor Kendaraan:</h5>
+        <h4>{{ session["result"] }}</h4>
+        <h5>Tanggal Masuk:</h5>
+        <h4>{{ session["tanggal"] }}</h4>
+        <h5>Waktu Masuk:</h5>
+        <h4>{{ session["waktu"] }}</h4>
+        <br />
+        <a href="/">Back to Upload</a>
+      </div>
+    </section>
+  </body>
+</html>

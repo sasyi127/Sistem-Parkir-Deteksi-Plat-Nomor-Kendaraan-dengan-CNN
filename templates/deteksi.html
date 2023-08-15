@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Parkir - Laporan Deteksi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../statis/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <header>SISTEM PARKIR</header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('login') }}"
+                ><i class="ri-account-circle-line"></i>Login</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('index') }}"
+                ><i class="ri-parking-box-line"></i>Parkir Masuk</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('form_keluar') }}"
+                ><i class="ri-parking-fill"></i>Parkir Keluar</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('laporan')}}"
+                ><i class="ri-folder-open-line"></i>Laporan
+              </a>
+            </li>
+            <ul>
+              <li>
+                <a href="{{ url_for('deteksi')}}"
+                  ><i class="ri-scan-line"></i>Hasil Deteksi</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('masuk') }}"
+                  ><i class="ri-e-bike-line"></i>Kendaraan Masuk</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('keluar') }}"
+                  ><i class="ri-motorbike-line"></i>Kendaraan Keluar</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('admin') }}"
+                  ><i class="ri-user-line"></i>Data Admin</a
+                >
+              </li>
+            </ul>
+            <li>
+              <a href="{{ url_for('about') }}"
+                ><i class="ri-settings-line"></i>Tentang</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="laporan">
+        <h1>PT. XYZ</h1>
+        <h3>Laporan Hasil Deteksi Plat Nomor Kendaraan</h3>
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Gambar Kendaraan</th>
+              <th>Gambar Terdeteksi</th>
+              <th>Hasil Deteksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in deteksi %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>
+                <img
+                  src="{{ url_for('static', filename=data[1]) }}"
+                  alt="Gambar Kendaraan"
+                  style="max-height: 100px"
+                />
+              </td>
+              <td>
+                {% if data.terdeteksi %} Tidak Terdeteksi {% else %} Terdeteksi
+                {% endif %}
+              </td>
+              <td>{{ data[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h5>Jakarta, {{ tanggal }}</h5>
+        <h5>Salsa</h5>
+      </div>
+    </section>
+  </body>
+</html>

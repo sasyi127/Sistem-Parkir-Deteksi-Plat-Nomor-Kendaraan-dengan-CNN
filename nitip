@@ -1,0 +1,36 @@
+CREATE TABLE masuk (
+  ID_Masuk INT AUTO_INCREMENT PRIMARY KEY,
+  Plat_Nomor VARCHAR(255) NOT NULL,
+  Tanggal_Masuk VARCHAR(255) NOT NULL,
+  Waktu_Masuk VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE keluar (
+  ID_Keluar INT AUTO_INCREMENT PRIMARY KEY,
+  ID_Masuk INT NOT NULL,
+  Tanggal_Keluar VARCHAR(255) NOT NULL NOT NULL,
+  Waktu_Masuk VARCHAR(255) NOT NULL,
+  Waktu_Keluar VARCHAR(255) NOT NULL,
+  Durasi_Parkir INT NOT NULL,
+  Harga_Parkir DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (ID_Masuk) REFERENCES Masuk(ID_Masuk)
+);
+INSERT INTO admin (username, password) VALUES ('admin1', 'password1');
+INSERT INTO admin (username, password) VALUES ('admin2', 'password2');
+
+INSERT INTO admin (username, password, nama, tgl_lahir, jenis_kelamin, alamat, no_tlp) VALUES ('sasa', 'admin1', 'Salsa Aulia Asyifa', '12 Juli 2001', 'Perempuan', 'Jakarta Tmiur, Pasar Rebo', '087868796432');
+INSERT INTO admin (username, password, nama, tgl_lahir, jenis_kelamin, alamat, no_tlp) VALUES ('zia', 'admin2', 'Zia Ahmad Syarif', '19 Mei 2001', 'Laki-laki', 'Depok, Margonda', '081234567891');
+INSERT INTO admin (username, password, nama, tgl_lahir, jenis_kelamin, alamat, no_tlp) VALUES ('nova', 'admin3', 'Nova Pamungkas', '23 November 1998', 'Laki-laki', 'Jakarta Timur, Ciracas', '087712347891');
+
+
+cursor.execute("SELECT * FROM masuk")
+            
+
+            # Mengubah data tanggal dan waktu menjadi objek datetime
+
+            for row in data_masuk:
+                # Misalnya data tanggal dan waktu berada di kolom kedua dan ketiga
+                tanggal_masuk_str = row[2]
+                waktu_masuk_str = row[3]
+
+                # Ubah menjadi objek datetime

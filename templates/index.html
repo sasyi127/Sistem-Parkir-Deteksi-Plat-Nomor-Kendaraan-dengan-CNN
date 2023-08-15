@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Parkir</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="../static/style.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <header>SISTEM PARKIR</header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('login') }}"
+                ><i class="ri-account-circle-line"></i>Login</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('index') }}"
+                ><i class="ri-parking-box-line"></i>Parkir Masuk</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('form_keluar') }}"
+                ><i class="ri-parking-fill"></i>Parkir Keluar</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('laporan')}}"
+                ><i class="ri-folder-open-line"></i>Laporan
+              </a>
+            </li>
+            <ul>
+              <li>
+                <a href="{{ url_for('deteksi')}}"
+                  ><i class="ri-scan-line"></i>Hasil Deteksi</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('masuk') }}"
+                  ><i class="ri-e-bike-line"></i>Kendaraan Masuk</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('keluar') }}"
+                  ><i class="ri-motorbike-line"></i>Kendaraan Keluar</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('admin') }}"
+                  ><i class="ri-user-line"></i>Data Admin</a
+                >
+              </li>
+            </ul>
+            <li>
+              <a href="{{ url_for('about') }}"
+                ><i class="ri-settings-line"></i>Tentang</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="upload-text">
+        <h5>Sistem Deteksi</h5>
+        <h4>Plat Nomor Kendaraan</h4>
+        <h1>Upload Foto Kendaraan</h1>
+      </div>
+      <div class="upload-gambar">
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+          <input
+            type="file"
+            name="image"
+            accept="image/png, image/jpeg, image/jpg"
+            id="image"
+            onchange="previewImage()"
+          />
+          <br />
+          <input type="submit" value="Detect" />
+        </form>
+      </div>
+      <div class="container">
+        {% if username %}
+        <h5>Admin {{ username }},</h5>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        {% endif %}
+      </div>
+    </section>
+  </body>
+</html>

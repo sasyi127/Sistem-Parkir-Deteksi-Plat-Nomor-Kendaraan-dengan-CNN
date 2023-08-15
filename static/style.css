@@ -1,0 +1,421 @@
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+/* Tampilan Home - Login" */
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #391313;
+}
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center;
+  line-height: 70px;
+  background: #3f1616;
+  user-select: none;
+}
+nav ul li a {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  padding-left: 40px;
+  box-sizing: border-box;
+  color: white;
+  border-top: 1px solid #703838;
+  border-bottom: 1px solid black;
+  transition: 0.4s;
+}
+nav ul li:hover a {
+  padding-left: 50px;
+}
+nav ul li a:hover {
+  color: #dd8f8f;
+}
+nav ul a i {
+  margin-right: 16px;
+}
+nav ul ul {
+  margin-left: 20px;
+  padding-left: 0;
+}
+nav ul ul li {
+  line-height: 40px;
+  border-bottom: none;
+}
+nav ul ul li a {
+  font-size: 16px;
+  padding-left: 60px;
+}
+section {
+  margin-left: 250px;
+  padding: 0px;
+  background-color: #703838;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.login p {
+  color: red;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.login label {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.login input[type="text"],
+.login input[type="password"] {
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.login input[type="submit"] {
+  background-color: #391313;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login input[type="submit"]:hover {
+  background-color: #551e1e;
+}
+
+/* Tampilan Login - Registrasi */
+.registrasi h1 {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.registrasi p {
+  color: red;
+}
+.registrasi form {
+  display: flex;
+  flex-direction: column;
+}
+.registrasi label {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.registrasi input[type="text"],
+.registrasi input[type="password"] {
+  font-size: 16px;
+}
+.registrasi input[type="submit"] {
+  background-color: #391313;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.registrasi input[type="submit"]:hover {
+  background-color: #551e1e;
+}
+
+/* Tampilan Index - Upload" */
+.upload-text {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+.upload-text h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 5px;
+}
+.upload-text h1 {
+  font-family: cursive;
+  font-size: 50px;
+  line-height: 1;
+  color: white;
+}
+.upload-text h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 30px;
+}
+.upload-gambar {
+  text-align: center;
+}
+.upload-gambar {
+  margin-top: 20px;
+}
+button {
+  padding: 0;
+}
+input[type="file"] {
+  position: relative;
+  text-align: right;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #580d0d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 50%;
+}
+input[type="file"]::file-selector-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#imagePreview {
+  max-width: 300px;
+  margin-top: 20px;
+}
+input[type="submit"] {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #580d0d;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+input[type="submit"]:hover {
+  background-color: #391313;
+  color: #ffffff;
+}
+.container {
+  text-align: right;
+  margin-top: 20px;
+}
+.container h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+/* Style untuk tombol Logout */
+.btn-danger {
+  color: #fff;
+  background-color: #391313;
+  border-color: #391313;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn-danger:hover {
+  background-color: #551e1e;
+}
+/* Section Parkir Keluar */
+.his {
+  color: white;
+  font-family: cursive;
+  align-items: center;
+  text-align: center;
+}
+/* Section Laporan Hasil Deteksi */
+.laporan {
+  color: white;
+  min-height: 100vh;
+}
+.laporan h1 {
+  padding-top: 20px;
+}
+.laporan h3 {
+  text-align: center;
+}
+.laporan h5 {
+  text-align: right;
+  font-size: 16px;
+}
+thead {
+  color: white;
+  width: auto;
+}
+tr {
+  color: white;
+}
+th {
+  color: white;
+}
+.laporan a {
+  margin-top: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.55s ease;
+  text-decoration: none;
+  margin-left: 500px;
+}
+.laporan a:hover {
+  border-bottom: 2px solid white;
+}
+/* Section Hasil Deteksi */
+
+.upload {
+  padding: 20px;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  background-color: transparent;
+  border: 5px solid #3f1616;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.upload h1 {
+  font-family: cursive;
+  font-size: 50px;
+  line-height: 1;
+  color: white;
+  margin-bottom: 20px;
+}
+.upload img {
+  max-width: 100%;
+  max-height: 250px;
+}
+.upload h5 {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  margin-top: 30px;
+}
+.upload h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+.upload a {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+  color: #3f1616;
+}
+.upload a:hover {
+  text-decoration: underline;
+  color: white;
+}
+/* Section Tentang */
+
+.tentang {
+  max-width: 500px;
+  margin: 30px;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  border: 5px solid #3f1616;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tentang h2 {
+  font-family: cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 45px;
+}
+.tentang h4 {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 10px;
+}
+.card {
+  background-color: white;
+  margin-top: 50px;
+  padding: 50px;
+  border-radius: 5px;
+  text-align: center;
+}
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.card h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #3f1616;
+}
+.laporan .btn-pdf {
+  color: #fff;
+  background-color: #391313;
+  border-color: #391313;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.laporan .btn-pdf:hover {
+  background-color: #551e1e;
+}
+.laporan-lap h1 {
+  color: white;
+  margin-top: 30px;
+}
+.laporan-lap a {
+  color: #391313;
+  background-color: white;
+  border-color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.laporan-lap a:hover {
+  background-color: #dd8f8f;
+}

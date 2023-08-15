@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Parkir</title>
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <header>SISTEM PARKIR</header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('login') }}"
+                ><i class="ri-account-circle-line"></i>Login</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('index') }}"
+                ><i class="ri-parking-box-line"></i>Parkir Masuk</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('form_keluar') }}"
+                ><i class="ri-parking-fill"></i>Parkir Keluar</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('laporan')}}"
+                ><i class="ri-folder-open-line"></i>Laporan
+              </a>
+            </li>
+            <ul>
+              <li>
+                <a href="{{ url_for('deteksi')}}"
+                  ><i class="ri-scan-line"></i>Hasil Deteksi</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('masuk') }}"
+                  ><i class="ri-e-bike-line"></i>Kendaraan Masuk</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('keluar') }}"
+                  ><i class="ri-motorbike-line"></i>Kendaraan Keluar</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('admin') }}"
+                  ><i class="ri-user-line"></i>Data Admin</a
+                >
+              </li>
+            </ul>
+            <li>
+              <a href="{{ url_for('about') }}"
+                ><i class="ri-settings-line"></i>Tentang</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="registrasi">
+        <h1>Form Registrasi Admin</h1>
+        {% if error %}
+        <p style="color: red">{{ error }}</p>
+        {% endif %}
+        <form method="post" action="/registrasi">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <br />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <br />
+          <label for="nama">Nama:</label>
+          <input type="text" id="nama" name="nama" required />
+          <br />
+          <label for="tgl_lahir">Tanggal Lahir:</label>
+          <input type="date" id="tgl_lahir" name="tgl_lahir" required />
+          <br />
+          <label for="jenis_kelamin">Jenis Kelamin:</label>
+          <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+          <br />
+          <label for="alamat">Alamat:</label>
+          <textarea id="alamat" name="alamat" required></textarea>
+          <br />
+          <label for="no_hp">No Handphone:</label>
+          <input type="tel" id="no_tlp" name="no_tlp" required />
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

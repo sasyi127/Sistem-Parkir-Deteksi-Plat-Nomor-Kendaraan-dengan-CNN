@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Parkir</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="sidebar">
+        <header>SISTEM PARKIR</header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ url_for('login') }}"
+                ><i class="ri-account-circle-line"></i>Login</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('index') }}"
+                ><i class="ri-parking-box-line"></i>Parkir Masuk</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('form_keluar') }}"
+                ><i class="ri-parking-fill"></i>Parkir Keluar</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="ri-folder-open-line"></i>Laporan </a>
+            </li>
+            <ul>
+              <li>
+                <a href="{{ url_for('deteksi')}}"
+                  ><i class="ri-scan-line"></i>Hasil Deteksi</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('masuk') }}"
+                  ><i class="ri-e-bike-line"></i>Kendaraan Masuk</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('keluar') }}"
+                  ><i class="ri-motorbike-line"></i>Kendaraan Keluar</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('admin') }}"
+                  ><i class="ri-user-line"></i>Data Admin</a
+                >
+              </li>
+            </ul>
+            <li>
+              <a href="{{ url_for('about') }}"
+                ><i class="ri-settings-line"></i>Tentang</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="upload-text">
+        <h5>Sistem Deteksi</h5>
+        <h4>Plat Nomor Kendaraan</h4>
+        <h1>Upload Foto Kendaraan</h1>
+      </div>
+      <div class="upload-gambar">
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+          <div id="video-container">
+            <video id="video" width="480" height="320" autoplay></video>
+          </div>
+          <button id="capture-btn" class="btn btn-primary">Ambil Gambar</button>
+          <canvas id="canvas" width="100" height="80"></canvas>
+          <img
+            id="captured-image"
+            src=""
+            alt="Gambar Terambil"
+            style="max-height: 100px"
+          />
+          <input
+            type="file"
+            name="image"
+            accept="image/png, image/jpeg, image/jpg"
+            id="image"
+            onchange="previewImage()"
+          />
+          <br />
+          <img id="imagePreview" src="" alt="Preview Image" />
+          <br /><br />
+          <input type="submit" value="Detect" />
+        </form>
+      </div>
+      <div class="container">
+        {% if username %}
+        <h5>Admin {{ username }},</h5>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        {% endif %}
+      </div>
+    </section>
+    <script>
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const captureBtn = document.getElementById("capture-btn");
+      const capturedImage = document.getElementById("captured-image");
+
+      // Mengakses kamera pengguna
+      async function startCamera() {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" }, // Menggunakan kamera belakang (jika ada)
+          });
+          video.srcObject = stream;
+        } catch (err) {
+          console.error("Error accessing camera: ", err);
+        }
+      }
+
+      // Mengambil gambar dari video dan menampilkan di canvas
+      function captureImage() {
+        canvas
+          .getContext("2d")
+          .drawImage(video, 0, 0, canvas.width, canvas.height);
+        capturedImage.src = canvas.toDataURL("image/jpeg"); // Menampilkan gambar yang sudah diambil di elemen <img>
+        canvas.style.display = "none"; // Sembunyikan elemen <canvas>
+        video.style.display = "none"; // Sembunyikan elemen <video>
+        captureBtn.style.display = "none"; // Sembunyikan tombol "Ambil Gambar"
+      }
+
+      // Event listener untuk tombol "Ambil Gambar"
+      captureBtn.addEventListener("click", () => {
+        captureImage();
+      });
+
+      // Mulai kamera saat halaman selesai dimuat
+      document.addEventListener("DOMContentLoaded", () => {
+        startCamera();
+      });
+    </script>
+  </body>
+</html>
